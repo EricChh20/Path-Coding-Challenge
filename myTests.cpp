@@ -1,3 +1,9 @@
+/** myTests.cpp
+ * 
+ * Unit tests using Google Test
+ * 
+ * **/
+
 #include <gtest/gtest.h> 
 #include "maze.h"
 
@@ -6,7 +12,6 @@
 TEST(storyOne, findTarget){
 
 maze solver; 
-
 std::string keyword = "empty";
 bool passing = false; 
 
@@ -24,6 +29,7 @@ bool passing = false;
     EXPECT_FALSE(passing); 
 }
 
+//valid test
 {
     std::vector<std::string> list = {"full", "empty", "full", "full", "full", "full", "full"};
 
@@ -38,12 +44,3 @@ bool passing = false;
 
 }
 
-
-int main(int argc, char* argv[]){
-
-    std::cout << "-------------------------------- PATH AI CODING CHALLENGE ---------------------------------- " << std::endl; 
-    
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS(); 
-
-}
