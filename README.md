@@ -1,6 +1,11 @@
 # Path-Coding-Challenge
 
+Author: Eric Chheang 
+Date: 3/23/2022
+Purpose: Coding challenge from PathAI Robotics
 
+### Description of Solution
+Each user story was addressed incrementally and unit tests were created using GoogleTest.
 
 
 ## Getting Started
@@ -36,3 +41,11 @@ make
 ./myTests
 ```
 
+
+## Part 1 Coding 
+
+User Story 1: Find "empty" space in a single-row input 
+User Story 2: Walk through a "hallway" maze such as 
+User Story 3: Find a way into and out of rooms such as
+User Story 4: Find winding paths
+User Story 5: Reach end of maze, even if dead ends
