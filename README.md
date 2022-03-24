@@ -15,6 +15,7 @@ Purpose: Coding challenge from Path Robotics
 The purpose of this Repo is to provide a solution to the Path Robotic's Code Kata - Maze coding challenge.  
 The following instructions should allow you to clone, set up, build, and run the program and it's unit tests.  
 
+<br />
 
 
 ## Getting Started
@@ -48,7 +49,12 @@ make
 ```shell
 ./myTests
 ```
-
+<br />
+<br />
+### Resulting execution: 
+<img width="668" alt="Screen Shot 2022-03-23 at 11 36 29 PM" src="https://user-images.githubusercontent.com/42673389/159837443-7cdbeaf5-2c32-40e7-b979-e7a076319525.png">
+<br />
+<br />
 
 ## Reflection/Analysis 
   
@@ -60,7 +66,11 @@ make
 4. User Story 4: Find winding paths
 5. User Story 5: Reach end of maze, even if dead ends
 
-### Part 2 Analysi
+
+<br />
+<br />
+
+### Part 2 Analysis
 
 1. Analysis Story 1   
 At this point, you may have created a general-purpose solver. If not, try to identify some types of mazes that your algorithm would not solve correctly. 
@@ -73,7 +83,8 @@ At this point, you may have created a general-purpose solver. If not, try to ide
   - It requires user input for a specific "keyword" to find within the "maze". 
 
   
-  
+  <br />
+
   
 2. Analysis Story 2 
 If you kept things simple, it is likely that your algorithm may not be as efficient as possible. Describe the solution’s complexity and approaches that could be used to optimize it further. 
@@ -84,7 +95,8 @@ If you kept things simple, it is likely that your algorithm may not be as effici
   - Space Complexity: In typical DFS, the space complexity would involve a data structure like a stack which could, at worse, hold all the nodes in the graph. Therefore it would be O(V). In my implementation, I used a 2D matrix to create a replica of the maze with a "solution" drawn out on it. 
 
   
-    
+ <br />
+
   
 3. Analysis Story 3 
 Moving robots isn’t as simple as moving a 1x1 pixel through a maze. Instead, we must plan a path while avoiding obstacles using a collision model. We can approximate this by plotting a path for a 1x3 “ship” through a maze. In addition to moving “backward” and “forward” the ship can also rotate around its center of gravity provided it is in the center of a 3x3 
