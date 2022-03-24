@@ -10,12 +10,9 @@ class maze{
 
 public:
 
-
     /** checwks if x,y position is a valid step 
      * 
      * @param maze the 2D maze provided 
-     * @param colSize x legnth of maze col 
-     * @param rowSize y length of the maze row
      * @param curX current x position
      * @param curY current y position
      * @return true if valid, else false 
@@ -24,8 +21,8 @@ public:
     bool isValidStep(const std::vector<std::vector<int>>& maze, int x, int y){
 
         if(x <= maze.size() && y <= maze[0].size() && maze[x][y] ==0){
-                return true; 
-            }
+            return true; 
+        }
         return false;
     }
     /** utility function that uses a recursive algorithm to traverse through "maze"
@@ -37,7 +34,7 @@ public:
      * @return true if one of conditions are met
      * 
      *  **/
-    bool backtrack(std::vector<std::vector<int>> maze, std::vector<std::vector<int>> solPath, int curX, int curY){
+    bool backtrack(std::vector<std::vector<int>>& maze, std::vector<std::vector<int>>& solPath, int curX, int curY){
 
         // check if current pos is end goal - making assumption we have beg/end
         if ((curX == maze.size()-1) && maze[curX][curY] == 0){
@@ -113,7 +110,6 @@ public:
         }
         return false;
     }
-
 
 };
 

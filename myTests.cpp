@@ -17,41 +17,16 @@
 TEST(storyOne, findTarget){
 
 maze solver; 
-bool passing = false; 
-
-// Checking invalid tests
-{
-    std::vector<std::vector<int>> list = {{1, 1, 1, 1, 1, 1}};
-    
-    for (int i =0; i < list.size(); i++){
-        for (int j=0; j < list[0].size(); j++){
-            if (solver.isValidStep(list, i, j)){
-            passing = true; 
-            break; 
-            }
-        }
-    }
-    // no keyword found, should return false
-    EXPECT_FALSE(passing); 
-}
-
 //valid test
 {
-    std::vector<std::vector<int>> list = {{1, 0, 1, 1, 1, 1}};
+    std::vector<std::vector<int>> maze = {{1, 0, 1, 1, 1, 1}};
+    std::vector<int> start = {0,1};
+    std::vector<int> dest = {0,1};
+    //our general maze solver can now replace our naive version for user story 1
+    EXPECT_TRUE(solver.hasPath(maze, start, dest));
 
-    for (int i =0; i < list.size(); i++){
-        for (int j=0; j < list[0].size(); j++){
-            if (solver.isValidStep(list, i, j)){
-            passing = true; 
-            break; 
-            }
-        }
     }
-    EXPECT_TRUE(passing);
 }
-
-}
-
 
 /**
  * ----------------------------------------------------------------
@@ -79,7 +54,6 @@ TEST(StoryTwo, walkHallway){
         {1, 1, 1, 1},
         {1, 1, 1, 1}
     };
-
     // testing isValidStep() functionality 
     {
         int pathSize = 4; 
@@ -97,7 +71,6 @@ TEST(StoryTwo, walkHallway){
         }
         EXPECT_EQ(pathSize, counter);
     }
-
     // testing backtracking, recursive algorithm to traverse maze and find valid path
     {
         EXPECT_FALSE(maze == solPath);
@@ -111,7 +84,6 @@ TEST(StoryTwo, walkHallway){
         std::vector<int> dest = {3,2};
         EXPECT_TRUE(solver.hasPath(maze, start, dest));
     }
-
 }
 
 /**
@@ -124,11 +96,9 @@ TEST(StoryTwo, walkHallway){
 **/
 
 TEST(StoryThree, bfsMaze){
-
     // testing parameters for story 3
     maze solver;
     // example maze given - hard coding input may not be ideal but in this situation we are provided input
-
     // test bad start/dest input
     {
         std::vector<std::vector<int>> maze3 = { 
@@ -184,7 +154,6 @@ maze solver;
     std::vector<int> dest = {6, 4};
 
     EXPECT_FALSE(solver.hasPath(maze, start, dest));
-
 }
 
 //sucessful path with correct inputs
@@ -202,7 +171,31 @@ maze solver;
     std::vector<int> dest = {6, 3};
 
     EXPECT_TRUE(solver.hasPath(maze, start, dest));
-
+}
 }
 
+/**
+ * ----------------------------------------------------------------
+ * User Story 5: 
+ * Reach the maze even with dead ends
+ * - at this point, we are looking to test our maze solver with more complex maze patterns
+ * ----------------------------------------------------------------
+**/
+TEST(UserStory5, mazeTest){
+
+    maze solver; 
+    {
+    std::vector<std::vector<int>> maze = {
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 0, 0, 1},
+        {1, 1, 1, 0, 1}
+    };   
+
+    std::vector<int> start = {0, 1};
+    std::vector<int> dest = {5, 3};
+    EXPECT_TRUE(solver.hasPath(maze, start, dest));
+    }
 }
