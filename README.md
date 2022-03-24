@@ -90,10 +90,13 @@ At this point, you may have created a general-purpose solver. If not, try to ide
 If you kept things simple, it is likely that your algorithm may not be as efficient as possible. Describe the solution’s complexity and approaches that could be used to optimize it further. 
 
 - As I was working through user story 2, I decided to implement a recursive backtracking algorithm. This is not the most efficient algorithm to deploy because it is esentially a DFS approach where it has to check the entire matrix. In my specific implementation, it is even worse in terms of space complexity because I wanted to keep track of the solution path so I had to create another solutions matrix for that. 
+
   - Time Complexity: When using DFS, the big O of traversing an adjacency matrix like this maze would O(V^2), with being the number of nodes. In short, we are traversing to each node, checking to see if we have visited, then moving on to the adjacent node. So, while this technically "solves" the problem, it would not be ideal with a larger tree to have to search. 
 
   - Space Complexity: In typical DFS, the space complexity would involve a data structure like a stack which could, at worse, hold all the nodes in the graph. Therefore it would be O(V). In my implementation, I used a 2D matrix to create a replica of the maze with a "solution" drawn out on it. 
-
+ 
+ 
+- In my later implementation, I went with a BFS algorithm utilizing queues instead of recursive DFS. Also, it can be noted that we no longer need a "visited" array to track our movements by having the visited space be -1 and our check being <= 0. This is more efficient and would bring the time complexity to O(nm) and space complexity to O(nm), with n and m being the dimensions of the matrix (maze). 
   
  <br />
 
