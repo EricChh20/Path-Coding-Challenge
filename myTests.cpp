@@ -105,6 +105,12 @@ TEST(StoryTwo, walkHallway){
             EXPECT_EQ(maze, solPath);
         }
     }
+    //tested new maze solver with 2nd maze
+    {
+        std::vector<int> start = {0,2};
+        std::vector<int> dest = {3,2};
+        EXPECT_TRUE(solver.hasPath(maze, start, dest));
+    }
 
 }
 
@@ -149,9 +155,54 @@ TEST(StoryThree, bfsMaze){
         std::vector<int> dest = {3,3};
 
         EXPECT_TRUE(solver.hasPath(maze3, start, dest));
-
     }
+}
 
+/**
+ * ----------------------------------------------------------------
+ * User Story 4: 
+ * Follow winding paths
+ * - at this point, we are looking to test our maze solver with more complex maze patterns
+ * ----------------------------------------------------------------
+**/
+
+TEST(UserStory4, mazeTest){
+
+maze solver; 
+//expected failure due to bad inputs
+{
+    std::vector<std::vector<int>> maze = {
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 1, 0, 1},
+        {1, 0, 0, 0, 1},
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 1, 0, 1}
+    };
+    std::vector<int> start = {0, 1};
+    std::vector<int> dest = {6, 4};
+
+    EXPECT_FALSE(solver.hasPath(maze, start, dest));
 
 }
 
+//sucessful path with correct inputs
+{
+    std::vector<std::vector<int>> maze = {
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 1, 0, 1},
+        {1, 0, 0, 0, 1},
+        {1, 0, 1, 1, 1},
+        {1, 0, 0, 0, 1},
+        {1, 1, 1, 0, 1}
+    };
+    std::vector<int> start = {0, 1};
+    std::vector<int> dest = {6, 3};
+
+    EXPECT_TRUE(solver.hasPath(maze, start, dest));
+
+}
+
+}

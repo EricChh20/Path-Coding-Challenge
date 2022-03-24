@@ -81,12 +81,12 @@ public:
      * 
      *  **/
     bool hasPath(std::vector<std::vector<int>>& maze, std::vector<int>& start, std::vector<int>& destination) {
-        int colSize = maze.size(), rowSize = maze[0].size();
+        int rowSize = maze.size(), colSize = maze[0].size();
         int d[] = {0, 1, 0, -1, 0};
         //queue to keep track of tiles to visit
         std::queue<std::vector<int>> todo;
         todo.push(start);
-        //set visited tiles as -1 
+        //set visited tiles as -1
         maze[start[0]][start[1]] = -1;
 
         while (!todo.empty()) {
@@ -94,29 +94,27 @@ public:
             todo.pop();
             // check all four directions to see which way we can move
             for (int i = 0; i < 4; i++) {
-                int col = p[0], row = p[1];
-                //check which side is valid
-                while (col + d[i] >= 0 && col + d[i] < colSize &&
-                         row + d[i + 1] >= 0 && row + d[i + 1] < rowSize && 
-                         maze[col + d[i]][row + d[i + 1]] <= 0) {
+                int row = p[0], col = p[1];
+                while (row + d[i] >= 0 && row + d[i] < rowSize && col + d[i + 1] >= 0 &&
+                 col + d[i + 1] < colSize && maze[row + d[i]][col + d[i + 1]] <= 0) {
 
-                    col += d[i];
-                    row += d[i + 1];
+                    row += d[i];
+                    col += d[i + 1];
                 }
                 //if we reached our target end tile, return
-                if (col == destination[0] && row == destination[1]) {
+                if (row == destination[0] && col == destination[1]) {
                     return true;
                 }
-                if (!maze[col][row]) {
-                    maze[col][row] = -1;
-                    todo.push({col, row});
+                if (!maze[row][col]) {
+                    maze[row][col] = -1;
+                    todo.push({row, col});
                 }
             }
         }
         return false;
     }
 
-    
+
 };
 
 
